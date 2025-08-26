@@ -1,0 +1,77 @@
+# WordPress .gitignore - ONLY version our customizations
+
+# EXCLUDE EVERYTHING by default
+/*
+
+# INCLUDE only these important items:
+
+# Our custom child theme (MOST IMPORTANT)
+!/wp-content/
+/wp-content/*
+!/wp-content/themes/
+/wp-content/themes/*
+!/wp-content/themes/meup-child/
+
+# Include custom plugins if any
+!/wp-content/plugins/
+/wp-content/plugins/*
+!/wp-content/plugins/custom-*/
+
+# Include must-use plugins if any
+!/wp-content/mu-plugins/
+
+# Documentation
+!README.md
+!SETUP.md
+!CHANGELOG.md
+!.gitignore
+
+# Deployment scripts (for future)
+!deploy/
+!webhook/
+
+# === NEVER INCLUDE THESE ===
+
+# WordPress Core
+wp-admin/
+wp-includes/
+wp-*.php
+index.php
+xmlrpc.php
+
+# Configuration (contains secrets)
+wp-config*.php
+
+# Uploads and dynamic content
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+wp-content/backup*/
+wp-content/ai1wm-backups/
+wp-content/w3tc*/
+wp-content/advanced-cache.php
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*.backup
+*.sql
+*.sql.gz
+
+# System files
+.DS_Store
+.htaccess*
+.user.ini
+error_log
+debug.log
+
+# Development
+.vscode/
+.idea/
+node_modules/
+.env*
+
+# Test directory (separate WordPress instance)
+test/
