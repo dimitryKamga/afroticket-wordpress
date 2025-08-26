@@ -10,3 +10,10 @@ Timestamp: mar. 26 août 2025 19:16:47 EDT
 Fixed webhook secret verification.
 Timestamp: mar. 26 août 2025 19:18:02 EDT
 
+
+
+## Webhook Test #3 - Debug Mode
+
+Testing with debug endpoint to diagnose webhook issues.
+Timestamp: mar. 26 août 2025 19:18:57 EDT
+
