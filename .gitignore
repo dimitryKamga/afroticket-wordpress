@@ -74,4 +74,4 @@ node_modules/
 .env*
 
 # Test directory (separate WordPress instance)
-test/
+test/!WEBHOOK-TEST.md
