@@ -26,6 +26,10 @@
 !CHANGELOG.md
 !.gitignore
 
+# Version management
+!VERSION
+!scripts/
+
 # Deployment scripts (for future)
 !deploy/
 !webhook/
