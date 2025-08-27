@@ -565,7 +565,10 @@ add_action("wp_mail", function($atts) {
                 // Generate secure download URLs
                 $secure_tickets = [];
                 $ticket_ids = get_post_meta($booking_id, "ova_mb_event_record_ticket_ids", true);
+                error_log("SMS Debug: booking_id=$booking_id, ticket_ids=" . print_r($ticket_ids, true));
+                
                 if (!empty($ticket_ids) && is_array($ticket_ids)) {
+                    error_log("SMS Debug: Processing " . count($ticket_ids) . " tickets");
                     foreach ($ticket_ids as $ticket_id) {
                         // Ensure PDF exists
                         $pdf = new EL_PDF();
