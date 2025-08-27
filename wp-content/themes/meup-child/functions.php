@@ -474,19 +474,37 @@ function createSmsBody($tickets, $phoneCustomer, $facebooklink, $serviceType = "
 }
 
 function send_message_twillio($postvars) {
+    // Get Twilio credentials from WordPress options
+    $account_sid = get_option('twilio_account_sid');
+    $auth_token = get_option('twilio_auth_token');
+    
+    // Check if credentials are set
+    if (empty($account_sid) || empty($auth_token)) {
+        error_log('AfroTicket SMS: Twilio credentials not configured');
+        return false;
+    }
+    
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://api.twilio.com/2010-04-01/Accounts/get_option('twilio_account_sid', 'YOUR_TWILIO_ACCOUNT_SID')/Messages.json");
+    curl_setopt($ch, CURLOPT_URL, "https://api.twilio.com/2010-04-01/Accounts/" . $account_sid . "/Messages.json");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $postvars);
-    curl_setopt($ch, CURLOPT_USERPWD, "get_option('twilio_account_sid', 'YOUR_TWILIO_ACCOUNT_SID'):get_option('twilio_auth_token', 'YOUR_TWILIO_AUTH_TOKEN')");
+    curl_setopt($ch, CURLOPT_USERPWD, $account_sid . ":" . $auth_token);
 
     $result = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     
     if (curl_errno($ch)) {
+        error_log('AfroTicket SMS: cURL error - ' . curl_error($ch));
         curl_close($ch);
         return false;
+    }
+    
+    // Log response for debugging
+    if ($httpCode != 201) {
+        error_log('AfroTicket SMS: Twilio API error HTTP ' . $httpCode . ' - ' . $result);
+    } else {
+        error_log('AfroTicket SMS: Message sent successfully');
     }
     
     curl_close($ch);
