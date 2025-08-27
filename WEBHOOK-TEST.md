@@ -32,7 +32,13 @@ Timestamp: mar. 27 août 2025 00:15:30 EDT
 ## Webhook Test #6 - Updated Secret Authentication
 
 Testing webhook with updated GitHub secret using PAT authentication.
-Webhook URL: https://afroticket.ca/webhook/webhook-deploy.php
+Webhook URL: https://afroticket.ca/webhook-deploy.php (CORRECTED PATH)
 Expected to deploy to both live and test environments successfully.
 Timestamp: mar. 27 août 2025 00:20:00 EDT
+
+## Webhook Test #7 - Final Dual Deployment Test
+
+Testing corrected webhook URL and secret for dual environment deployment.
+Should successfully deploy to both live and test with authentication working.
+Timestamp: mar. 27 août 2025 00:22:00 EDT
 
