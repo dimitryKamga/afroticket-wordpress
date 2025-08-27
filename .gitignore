@@ -20,6 +20,15 @@
 # Include must-use plugins if any
 !/wp-content/mu-plugins/
 
+# TEST ENVIRONMENT - Include test wp-content customizations
+!/test/
+/test/*
+!/test/wp-content/
+/test/wp-content/*
+!/test/wp-content/themes/
+/test/wp-content/themes/*
+!/test/wp-content/themes/meup-child/
+
 # Documentation
 !README.md
 !SETUP.md
@@ -32,17 +41,23 @@
 
 # === NEVER INCLUDE THESE ===
 
-# WordPress Core
+# WordPress Core (live and test)
 wp-admin/
 wp-includes/
 wp-*.php
 index.php
 xmlrpc.php
+test/wp-admin/
+test/wp-includes/
+test/wp-*.php
+test/index.php
+test/xmlrpc.php
 
 # Configuration (contains secrets)
 wp-config*.php
+test/wp-config*.php
 
-# Uploads and dynamic content
+# Uploads and dynamic content (live and test)
 wp-content/uploads/
 wp-content/upgrade/
 wp-content/cache/
@@ -50,6 +65,13 @@ wp-content/backup*/
 wp-content/ai1wm-backups/
 wp-content/w3tc*/
 wp-content/advanced-cache.php
+test/wp-content/uploads/
+test/wp-content/upgrade/
+test/wp-content/cache/
+test/wp-content/backup*/
+test/wp-content/ai1wm-backups/
+test/wp-content/w3tc*/
+test/wp-content/advanced-cache.php
 
 # Logs and temporary files
 *.log
@@ -72,6 +94,3 @@ debug.log
 .idea/
 node_modules/
 .env*
-
-# Test directory (separate WordPress instance)
-test/
