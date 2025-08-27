@@ -23,3 +23,9 @@ Testing complete end-to-end automated deployment pipeline.
 Webhook secret restored and GitHub integration configured.
 Timestamp: mar. 26 août 2025 19:20:15 EDT
 
+## Webhook Test #5 - Dual Environment Deployment
+
+Testing enhanced webhook that deploys to both LIVE and TEST environments simultaneously.
+Git repository now tracks both wp-content/themes/meup-child and test/wp-content/themes/meup-child.
+Timestamp: mar. 27 août 2025 00:15:30 EDT
+
