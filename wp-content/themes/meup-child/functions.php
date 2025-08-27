@@ -228,16 +228,41 @@ function afroticket_security_settings_page() {
         echo '<div class="notice notice-success"><p>Settings saved!</p></div>';
     }
     
+    // Get current option values for form display
     $expiration_hours = get_option('afroticket_link_expiration_hours', 72);
-        update_option("twilio_account_sid", sanitize_text_field($_POST["twilio_account_sid"]));
-        update_option("twilio_auth_token", sanitize_text_field($_POST["twilio_auth_token"]));
-        update_option("twilio_messaging_service_sid", sanitize_text_field($_POST["twilio_messaging_service_sid"]));
+    $twilio_account_sid = get_option('twilio_account_sid', '');
+    $twilio_auth_token = get_option('twilio_auth_token', '');
+    $twilio_messaging_service_sid = get_option('twilio_messaging_service_sid', '');
     $rate_limiting = get_option('afroticket_rate_limiting', 1);
     ?>
     <div class="wrap">
         <h1>AfroTicket SMS Ticket Security</h1>
         <form method="post" action="">
             <table class="form-table">
+                <tr>
+                    <th scope="row">Twilio Account SID</th>
+                    <td>
+                        <input type="text" name="twilio_account_sid" value="<?php echo esc_attr($twilio_account_sid); ?>" 
+                               class="regular-text" />
+                        <p class="description">Your Twilio Account SID for SMS delivery</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Twilio Auth Token</th>
+                    <td>
+                        <input type="password" name="twilio_auth_token" value="<?php echo esc_attr($twilio_auth_token); ?>" 
+                               class="regular-text" />
+                        <p class="description">Your Twilio Auth Token</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Twilio Messaging Service SID</th>
+                    <td>
+                        <input type="text" name="twilio_messaging_service_sid" value="<?php echo esc_attr($twilio_messaging_service_sid); ?>" 
+                               class="regular-text" />
+                        <p class="description">Your Twilio Messaging Service SID</p>
+                    </td>
+                </tr>
                 <tr>
                     <th scope="row">Link Expiration (Hours)</th>
                     <td>
