@@ -469,6 +469,18 @@ function afroticket_handle_secure_download() {
     exit;
 }
 
+// Debug function to test SMS processing
+function afroticket_test_sms_debug() {
+    $booking_id = 11044;
+    $ticket_ids = get_post_meta($booking_id, "ova_mb_event_record_ticket_ids", true);
+    error_log("Manual Test: booking_id=$booking_id, ticket_ids=" . print_r($ticket_ids, true));
+    error_log("Manual Test: is_array=" . (is_array($ticket_ids) ? 'YES' : 'NO'));
+    error_log("Manual Test: empty=" . (empty($ticket_ids) ? 'YES' : 'NO'));
+    if (is_array($ticket_ids)) {
+        error_log("Manual Test: count=" . count($ticket_ids));
+    }
+}
+
 // Flush rewrite rules on activation
 add_action('after_switch_theme', 'afroticket_flush_rewrite_rules');
 function afroticket_flush_rewrite_rules() {
