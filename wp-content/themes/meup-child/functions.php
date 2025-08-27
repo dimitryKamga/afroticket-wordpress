@@ -320,9 +320,6 @@ function afroticket_display_download_stats() {
 function afroticket_generate_secure_hash($booking_id, $ticket_id, $customer_email) {
     $timestamp = time();
     $expiration_hours = get_option('afroticket_link_expiration_hours', 72);
-        update_option("twilio_account_sid", sanitize_text_field($_POST["twilio_account_sid"]));
-        update_option("twilio_auth_token", sanitize_text_field($_POST["twilio_auth_token"]));
-        update_option("twilio_messaging_service_sid", sanitize_text_field($_POST["twilio_messaging_service_sid"]));
     $expiration_timestamp = $timestamp + ($expiration_hours * 3600);
     
     // Create unique hash using booking, ticket, customer, timestamp and WordPress salt
