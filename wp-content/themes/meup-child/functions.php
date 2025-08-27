@@ -486,13 +486,11 @@ function createSmsBody($tickets, $phoneCustomer, $facebooklink, $serviceType = "
     }
 
     $expiration_hours = get_option('afroticket_link_expiration_hours', 72);
-        update_option("twilio_account_sid", sanitize_text_field($_POST["twilio_account_sid"]));
-        update_option("twilio_auth_token", sanitize_text_field($_POST["twilio_auth_token"]));
-        update_option("twilio_messaging_service_sid", sanitize_text_field($_POST["twilio_messaging_service_sid"]));
     $body = "🎫 Your AfroTicket is ready!\n\nDownload your ticket:\n{$ticketUrls}\n📱 Follow us: {$facebooklink}\n\n🔒 Secure link expires in {$expiration_hours} hours";
     
     if ($serviceType == "twilio") {
-        return "To=" . urlencode($phoneCustomer) . "&MessagingServiceSid=" . urlencode("get_option('twilio_messaging_service_sid', 'YOUR_TWILIO_MESSAGING_SID')") . "&Body=" . urlencode($body);
+        $messaging_service_sid = get_option('twilio_messaging_service_sid', '');
+        return "To=" . urlencode($phoneCustomer) . "&MessagingServiceSid=" . urlencode($messaging_service_sid) . "&Body=" . urlencode($body);
     }
     
     return "Service type not recognized";
