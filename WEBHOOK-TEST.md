@@ -29,3 +29,10 @@ Testing enhanced webhook that deploys to both LIVE and TEST environments simulta
 Git repository now tracks both wp-content/themes/meup-child and test/wp-content/themes/meup-child.
 Timestamp: mar. 27 août 2025 00:15:30 EDT
 
+## Webhook Test #6 - Updated Secret Authentication
+
+Testing webhook with updated GitHub secret using PAT authentication.
+Webhook URL: https://afroticket.ca/webhook/webhook-deploy.php
+Expected to deploy to both live and test environments successfully.
+Timestamp: mar. 27 août 2025 00:20:00 EDT
+
